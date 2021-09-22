@@ -1,6 +1,11 @@
 const { Command } = require("commander");
 const chalk = require("chalk");
-const { listContacts, addContact, getContactById, removeContact } = require("./contact");
+const {
+  listContacts,
+  addContact,
+  getContactById,
+  removeContact,
+} = require("./contact");
 const { table } = require("console");
 
 const program = new Command();
@@ -15,13 +20,11 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      listContacts()
-        .then((contacts) => console.table(contacts, null, 2))
-        .catch(console.error);
+      listContacts();
+
       break;
 
     case "get":
@@ -36,7 +39,6 @@ function invokeAction({ action, id, name, email, phone }) {
         })
         .catch(console.error);
       break;
-      24162416;
 
     case "add":
       addContact(name, email, phone)
@@ -48,16 +50,15 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      removeContact(id).then((index) => {
-        console.log('Index:', index);
-        if (index > -1) {
-          console.log(chalk.green("Contact removed!"));
-         
-        } else {
-          console.log(chalk.red("Contact not found!"));
-        }
-      })
-      .catch(console.error);
+      removeContact(id)
+        .then(({ index }) => {
+          if (index > -1) {
+            console.log(chalk.green("Contact removed!"));
+          } else {
+            console.log(chalk.red("Contact not found!"));
+          }
+        })
+        .catch(console.error);
       break;
 
     default:

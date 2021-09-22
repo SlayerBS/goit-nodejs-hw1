@@ -1,20 +1,20 @@
 [
   {
-    "id": "af14659d-a792-4984-bb8a-e829c1c57a4a",
-    "name": "Danila",
-    "email": "Danimango@gmail.com",
-    "phone": "322-22-252"
-  },
-  {
-    "id": "015cfe07-a8d6-4b03-a50f-63bb834b6392",
-    "name": "Danila",
-    "email": "Danimango@gmail.com",
-    "phone": "322-22-252"
-  },
-  {
     "id": "8a1d6415-7752-4057-8ff8-2460ea20da01",
     "name": "566655Mango",
     "email": "666555go@gmail.com",
     "phone": "666552-22-55"
+  },
+  {
+    "id": "754ca86b-37b1-4092-80ff-7a94721182d9",
+    "name": "Mango",
+    "email": "mango@gmail.com",
+    "phone": "322-22-22"
+  },
+  {
+    "id": "bda899eb-34a8-47d0-9deb-31b559f1b2ca",
+    "name": "Alice",
+    "email": "alice@gmail.com",
+    "phone": "322-22-3333"
   }
 ]

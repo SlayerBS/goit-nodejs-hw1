@@ -10,8 +10,11 @@ const readContacts = async () => {
   const contacts = JSON.parse(result);
   return contacts;
 };
-function listContacts() {
-  return readContacts();
+
+async function listContacts() {
+  const contacts = await readContacts();
+  console.table(contacts);
+  return contacts;
 }
 
 async function getContactById(contactId) {
@@ -22,19 +25,24 @@ async function getContactById(contactId) {
 
 async function removeContact(contactId) {
   const contacts = await readContacts();
-  let index = -1;
-  contacts.forEach((contact, idx) => {
-    if (contact.id === contactId) index = idx;
-  });
-  if (index > -1) {
-    contacts.splice(index, 1);
-  }
-  await fs.writeFile(
-    path.join(__dirname, "contacts.json"),
-    JSON.stringify(contacts, null, 2)
-  );
 
-  return index;
+  if (contacts.length === 0) {
+    return console.log(`No contacts`);
+  } else {
+    let index = -1;
+    contacts.forEach((contact, idx) => {
+      if (contact.id === contactId) index = idx;
+      contactName = contact.name;
+    });
+    if (index > -1) {
+      contacts.splice(index, 1);
+    }
+    await fs.writeFile(
+      path.join(__dirname, "contacts.json"),
+      JSON.stringify(contacts, null, 2)
+    );
+    return index;
+  }
 }
 
 async function addContact(name, email, phone) {
