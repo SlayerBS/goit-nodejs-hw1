@@ -25,8 +25,21 @@ async function getContactById(contactId) {
   return result;
 }
 
-function removeContact(contactId) {
+async function removeContact(contact) {
   const contacts = await readContacts();
+  contacts.forEach((contact, idx) => {if (contact.id===contact)});
+
+  //     const { items } = this;
+  //     for (let i = 0; i < items.length; i += 1) {
+  //       const { name } = items[i];
+
+  //       if (productName === name) {
+  //         console.log('Нашли такой продукт', productName);
+  //         console.log('index', i);
+  //         items.splice(i, 1);
+  //       }
+  //     }
+  //   },
 }
 
 async function addContact(name, email, phone) {
