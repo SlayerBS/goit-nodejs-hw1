@@ -28,10 +28,10 @@ async function getContactById(contactId) {
 async function removeContact(contactId) {
   const contacts = await readContacts();
   let index = -1;
-  contacts.forEach((contact, idx) => {if (contact.id===contact)
+  contacts.forEach((contact, idx) => { console.log('idx', idx, 'contact.id', contact.id); if (contact.id === contactId)
   index = idx;})
   if (index>-1){
-    contacts.splice(idx, 1);
+    contacts.splice(index, 1);
   }
   await fs.writeFile(
     path.join(__dirname, "contacts.json"),
