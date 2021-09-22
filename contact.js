@@ -25,25 +25,26 @@ async function getContactById(contactId) {
   return result;
 }
 
-async function removeContact(contact) {
+async function removeContact(contactId) {
   const contacts = await readContacts();
-  contacts.forEach((contact, idx) => {if (contact.id===contact)});
+  let index = -1;
+  contacts.forEach((contact, idx) => { console.log('idx', idx, 'contact.id', contact.id); if (contact.id === contactId)
+  index = idx;})
+  if (index>-1){
+    contacts.splice(index, 1);
+  }
+  await fs.writeFile(
+    path.join(__dirname, "contacts.json"),
+    JSON.stringify(contacts, null, 2)
+  );
 
-  //     const { items } = this;
-  //     for (let i = 0; i < items.length; i += 1) {
-  //       const { name } = items[i];
-
-  //       if (productName === name) {
-  //         console.log('Нашли такой продукт', productName);
-  //         console.log('index', i);
-  //         items.splice(i, 1);
-  //       }
-  //     }
-  //   },
+return index;
+ 
 }
 
 async function addContact(name, email, phone) {
   const contacts = await readContacts();
+  console.log(contacts);
   const newContact = { id: crypto.randomUUID(), name, email, phone };
   contacts.push(newContact);
   await fs.writeFile(

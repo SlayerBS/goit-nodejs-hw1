@@ -1,6 +1,6 @@
 const { Command } = require("commander");
 const chalk = require("chalk");
-const { listContacts, addContact, getContactById } = require("./contact");
+const { listContacts, addContact, getContactById, removeContact } = require("./contact");
 const { table } = require("console");
 
 const program = new Command();
@@ -48,7 +48,16 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      // ... id
+      removeContact(id).then((index) => {
+        console.log('Index:', index);
+        if (index > -1) {
+          console.log(chalk.green("Contact removed!"));
+         
+        } else {
+          console.log(chalk.red("Contact not found!"));
+        }
+      })
+      .catch(console.error);
       break;
 
     default:
