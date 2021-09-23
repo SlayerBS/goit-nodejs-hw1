@@ -25,11 +25,11 @@ async function getContactById(contactId) {
 
 async function removeContact(contactId) {
   const contacts = await readContacts();
-
+  let index = -1;
   if (contacts.length === 0) {
-    return console.log(`No contacts`);
+    console.log(`No contacts`);
+    return;
   } else {
-    let index = -1;
     contacts.forEach((contact, idx) => {
       if (contact.id === contactId) index = idx;
       contactName = contact.name;

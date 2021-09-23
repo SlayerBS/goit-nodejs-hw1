@@ -6,15 +6,9 @@
     "phone": "666552-22-55"
   },
   {
-    "id": "754ca86b-37b1-4092-80ff-7a94721182d9",
-    "name": "Mango",
-    "email": "mango@gmail.com",
-    "phone": "322-22-22"
-  },
-  {
-    "id": "bda899eb-34a8-47d0-9deb-31b559f1b2ca",
-    "name": "Alice",
-    "email": "alice@gmail.com",
-    "phone": "322-22-3333"
+    "id": "358320b7-cd68-441b-9518-47c14d891666",
+    "name": "Bob",
+    "email": "Bob@gmail.com",
+    "phone": "555-555-555"
   }
 ]

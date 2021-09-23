@@ -51,7 +51,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "remove":
       removeContact(id)
-        .then(({ index }) => {
+        .then((index) => {
           if (index > -1) {
             console.log(chalk.green("Contact removed!"));
           } else {
