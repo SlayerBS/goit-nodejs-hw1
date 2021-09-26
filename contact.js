@@ -23,26 +23,39 @@ async function getContactById(contactId) {
   return result;
 }
 
+// async function removeContact(contactId) {
+//   const contacts = await readContacts();
+//   let index = -1;
+//   if (contacts.length === 0) {
+//     console.log(`No contacts`);
+//     return;
+//   } else {
+//     contacts.forEach((contact, idx) => {
+//       if (contact.id === contactId) index = idx;
+//       contactName = contact.name;
+//     });
+//     if (index > -1) {
+//       contacts.splice(index, 1);
+//     }
+//     await fs.writeFile(
+//       path.join(__dirname, "contacts.json"),
+//       JSON.stringify(contacts, null, 2)
+//     );
+//     return index;
+//   }
+// }
+
 async function removeContact(contactId) {
   const contacts = await readContacts();
-  let index = -1;
-  if (contacts.length === 0) {
-    console.log(`No contacts`);
-    return;
-  } else {
-    contacts.forEach((contact, idx) => {
-      if (contact.id === contactId) index = idx;
-      contactName = contact.name;
-    });
-    if (index > -1) {
-      contacts.splice(index, 1);
-    }
-    await fs.writeFile(
-      path.join(__dirname, "contacts.json"),
-      JSON.stringify(contacts, null, 2)
-    );
-    return index;
-  }
+  const filteredContacts = contacts.filter(
+    (contact) => contact.id !== contactId
+  );
+  await fs.writeFile(
+    path.join(__dirname, "contacts.json"),
+    JSON.stringify(filteredContacts, null, 2)
+  );
+  const result = [filteredContacts, contacts.length - filteredContacts.length];
+  return result;
 }
 
 async function addContact(name, email, phone) {

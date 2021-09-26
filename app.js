@@ -51,9 +51,10 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "remove":
       removeContact(id)
-        .then((index) => {
-          if (index > -1) {
-            console.log(chalk.green("Contact removed!"));
+        .then(([contacts, isAccess]) => {
+          if (isAccess) {
+            console.log(chalk.green(`Removed contact with id ${id}`));
+            console.table(contacts);
           } else {
             console.log(chalk.red("Contact not found!"));
           }
